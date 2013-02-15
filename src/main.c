@@ -678,7 +678,7 @@ static int __init ndpi_mt_init(void)
 	pr_info("xt_ndpi 0.1 (nDPI wrapper module).\n");
 	/* init global detection structure */
 	ndpi_struct = ndpi_init_detection_module(detection_tick_resolution,
-                                                     malloc_wrapper, debug_printf);
+                                                     malloc_wrapper, free_wrapper, debug_printf);
 	if (ndpi_struct == NULL) {
 		pr_err("xt_ndpi: global structure initialization failed.\n");
                 ret = -ENOMEM;
