@@ -4,8 +4,9 @@ NDPI_PRO := ${NDPI_SRC}/lib/protocols
 
 ccflags-y += -I${src}/${NDPI_SRC}/include -I${src}/${NDPI_SRC}/lib -DOPENDPI_NETFILTER_MODULE
 
-#MODULES_DIR := /lib/modules/$(shell uname -r)
-#KERNEL_DIR := ${MODULES_DIR}/build
+EXTRA_CFLAGS := $(ccflags-y)
+MODULES_DIR := /lib/modules/$(shell uname -r)
+KERNEL_DIR := ${MODULES_DIR}/build
 
 obj-m := xt_ndpi.o
 xt_ndpi-y := main.o ${NDPI_SRC}/lib/ndpi_main.o \
@@ -116,7 +117,9 @@ xt_ndpi-y := main.o ${NDPI_SRC}/lib/ndpi_main.o \
                 ${NDPI_PRO}/xbox.o \
                 ${NDPI_PRO}/xdmcp.o \
                 ${NDPI_PRO}/yahoo.o \
-                ${NDPI_PRO}/zattoo.o
+                ${NDPI_PRO}/zattoo.o \
+                ${NDPI_PRO}/gtp.o \
+                ${NDPI_PRO}/lotus_notes.o 
 
 all:
 	if test -d ${NDPI_SRC}; then \
